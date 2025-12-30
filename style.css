@@ -1,23 +1,35 @@
+/* ===========================
+   GLOBAL
+=========================== */
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #fff;
+  background: #ffeef2; /* warna pink lembut */
   color: #333;
+  scroll-behavior: smooth;
 }
 
 .section {
   height: 100vh;
   scroll-snap-align: start;
   padding: 24px;
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 1s ease;
+}
+
+.section.active {
+  backdrop-filter: blur(2px);
 }
 
 html, body {
   scroll-snap-type: y mandatory;
 }
 
-/* LOGIN */
+/* ===========================
+   LOGIN PAGE
+=========================== */
 .login-page {
   display: flex;
   justify-content: center;
@@ -45,16 +57,28 @@ button {
   background: #ff9db0;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
-/* HERO */
+/* ===========================
+   HERO SECTION
+=========================== */
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
-/* STICKER BACKGROUND */
+
+.hero h1, .hero p {
+  text-shadow: 0 0 8px rgba(255, 192, 203, 0.8);
+}
+
+/* ===========================
+   STICKERS / HEARTS
+=========================== */
 .stickers {
   position: fixed;
   inset: 0;
@@ -64,66 +88,31 @@ button {
 
 .sticker {
   position: absolute;
-  width: 90px;
-  opacity: 0.85;
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Posisi tiap stiker */
-.s1 {
-  top: 15%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.s2 {
-  top: 50%;
-  right: 8%;
-  animation-delay: 1.5s;
-}
-
-.s3 {
-  bottom: 15%;
-  left: 30%;
-  animation-delay: 3s;
-}
-
-/* Animasi lembut */
-@keyframes float {
-  0%   { transform: translateY(0px) rotate(-2deg); }
-  50%  { transform: translateY(-20px) rotate(2deg); }
-  100% { transform: translateY(0px) rotate(-2deg); }
-}
-
-/* Pastikan teks di atas stiker */
-.hero,
-.message,
-.ending {
-  position: relative;
-  z-index: 2;
-}
-
-.sticker {
-  opacity: 0;
-  transform: scale(0.8);
+  width: 100px;
+  opacity: 0.8;
   animation:
     fadeIn 2s ease forwards,
     float 6s ease-in-out infinite,
     drift 14s linear infinite;
 }
 
-.s1 { animation-delay: 0.5s, 0s, 0s; }
-.s2 { animation-delay: 1.5s, 1.5s, 1.5s; }
-.s3 { animation-delay: 2.5s, 2.5s, 2.5s; }
+.s1 { top: 15%; left: 10%; animation-delay: 0.5s,0s,0s; }
+.s2 { top: 50%; right: 8%; animation-delay: 1.5s,1.5s,1.5s; }
+.s3 { bottom: 15%; left: 30%; animation-delay: 2.5s,2.5s,2.5s; }
 
 @keyframes fadeIn {
-  to {
-    opacity: 0.9;
-    transform: scale(1);
-  }
+  to { opacity: 0.9; transform: scale(1); }
 }
 
-/* FLOWERS */
+@keyframes float {
+  0%   { transform: translateY(0px) rotate(-2deg); }
+  50%  { transform: translateY(-20px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(-2deg); }
+}
+
+/* ===========================
+   FLOWERS ANIMATION
+=========================== */
 .flowers {
   position: fixed;
   inset: 0;
@@ -134,16 +123,18 @@ button {
 .flower {
   position: absolute;
   top: -50px;
+  font-size: 18px;
   animation: fall linear infinite;
+  opacity: 0.9;
 }
 
 @keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-  }
+  to { transform: translateY(110vh) rotate(360deg); }
 }
 
-/* MESSAGE CARD */
+/* ===========================
+   MESSAGE CARD
+=========================== */
 .message-card {
   display: flex;
   gap: 16px;
@@ -159,6 +150,15 @@ button {
   border-radius: 16px;
 }
 
+.message-card .text button {
+  margin-top: 8px;
+  background: #ff9db0;
+  color: white;
+  border-radius: 16px;
+  padding: 10px;
+  cursor: pointer;
+}
+
 @media(max-width:600px){
   .message-card {
     flex-direction: column;
@@ -166,13 +166,18 @@ button {
   }
 }
 
-/* VIDEO */
+/* ===========================
+   VIDEO STYLING
+=========================== */
 video {
   width: 100%;
   border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
 }
 
-/* MANUAL SLIDER */
+/* ===========================
+   MANUAL SLIDER - BUKTI PAGE
+=========================== */
 .manual-slider {
   display: flex;
   gap: 16px;
@@ -184,9 +189,13 @@ video {
 .manual-slider video {
   min-width: 90%;
   scroll-snap-align: center;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
 }
 
-/* FADE */
+/* ===========================
+   FADE-UP ANIMATION
+=========================== */
 .fade-up {
   opacity: 0;
   transform: translateY(40px);
@@ -198,11 +207,13 @@ video {
   transform: none;
 }
 
-/* FINAL MESSAGE */
+/* ===========================
+   FINAL MESSAGE
+=========================== */
 #finalMessage {
   position: fixed;
   inset: 0;
-  background: #fff;
+  background: rgba(255, 239, 245,0.95);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -211,6 +222,8 @@ video {
   opacity: 0;
   pointer-events: none;
   transition: 1.5s;
+  border-radius: 20px;
+  padding: 20px;
 }
 
 #finalMessage.show {
@@ -218,45 +231,14 @@ video {
   pointer-events: auto;
 }
 
-.section {
-  backdrop-filter: blur(0px);
-  transition: backdrop-filter 1s ease;
+/* ===========================
+   ENDING SECTION
+=========================== */
+.ending {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
 }
-
-.section.active {
-  backdrop-filter: blur(2px);
-}
-body {
-  background: #ffeef2; /* warna pink lembut */
-  color: #333;
-}
-
-/* VIDEO PENUTUP */
-.ending video {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
-}
-
-/* FLOWERS */
-.flowers {
-  z-index: 0;
-}
-
-.flower {
-  font-size: 18px;
-  animation-duration: 8s;
-  opacity: 0.9;
-}
-
-/* STICKER */
-.sticker {
-  width: 100px;
-  opacity: 0.8;
-}
-
-/* HERO TEXT */
-.hero h1, .hero p {
-  text-shadow: 0 0 8px rgba(255, 192, 203, 0.8);
-}
-
