@@ -226,3 +226,37 @@ video {
 .section.active {
   backdrop-filter: blur(2px);
 }
+body {
+  background: #ffeef2; /* warna pink lembut */
+  color: #333;
+}
+
+/* VIDEO PENUTUP */
+.ending video {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
+}
+
+/* FLOWERS */
+.flowers {
+  z-index: 0;
+}
+
+.flower {
+  font-size: 18px;
+  animation-duration: 8s;
+  opacity: 0.9;
+}
+
+/* STICKER */
+.sticker {
+  width: 100px;
+  opacity: 0.8;
+}
+
+/* HERO TEXT */
+.hero h1, .hero p {
+  text-shadow: 0 0 8px rgba(255, 192, 203, 0.8);
+}
+
