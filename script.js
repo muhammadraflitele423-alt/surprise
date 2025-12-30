@@ -110,15 +110,14 @@ window.addEventListener("scroll", () => {
   });
 });
 
-const endingSection = document.querySelector(".ending");
-
+const endingVideo = document.querySelector(".ending video");
 window.addEventListener("scroll", () => {
-  if (
-    endingSection &&
-    endingSection.getBoundingClientRect().top < window.innerHeight
-  ) {
+  if (endingVideo && endingSection.getBoundingClientRect().top < window.innerHeight) {
+    endingVideo.play().catch(()=>{}); // autoplay video saat section muncul
     document.querySelector(".s1").src = "foto/heart1.png";
     document.querySelector(".s2").src = "foto/heart2.png";
     document.querySelector(".s3").src = "foto/heart3.png";
   }
 });
+
+
