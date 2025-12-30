@@ -10,7 +10,7 @@ function login() {
 }
 
 /* TYPING */
-const text = "Selamat Lulus Sidang Skripsi 🤍";
+const text = "Selamat Lulus Sidang Skripsi yeee";
 let i = 0;
 const typing = document.getElementById("typing");
 if (typing) {
@@ -84,7 +84,7 @@ window.addEventListener("scroll", () => {
 
 /* TANYA */
 function tanya() {
-  let jawab = confirm("Mau liat bukti kangennya? 🥺");
+  let jawab = confirm("Moo liat buktinya bukan");
   if (jawab) window.location.href = "bukti.html";
   else document.getElementById("penutup").scrollIntoView({behavior:"smooth"});
 }
@@ -119,5 +119,6 @@ window.addEventListener("scroll", () => {
     document.querySelector(".s3").src = "foto/heart3.png";
   }
 });
+
 
 
