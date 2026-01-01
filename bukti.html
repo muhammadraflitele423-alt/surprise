@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bukti Kangen </title>
+  <title>Bukti Kangen 🤍</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2 class="center" style="text-align:center; margin-top:24px;">Sedikit Bukti Kangen soalnya ditanya terus anjay </h2>
+<h2 class="center" style="text-align:center; margin-top:24px;">
+  Sedikit Bukti Kangen 🤍
+</h2>
 
 <div class="manual-slider">
   <video src="video/v1.1.mp4" muted></video>
@@ -20,31 +22,25 @@
 </div>
 
 <div style="text-align:center; margin:24px;">
-  <button onclick="history.back()" style="background:#ff9db0; color:white; border:none; border-radius:16px; padding:10px 20px; cursor:pointer;">⬅ Kembali</button>
+  <button onclick="history.back()">⬅ Kembali</button>
 </div>
 
 <script>
 const vids = document.querySelectorAll(".manual-slider video");
 let current = 0;
 
-function playNext() {
+function playNext(){
   vids.forEach(v => v.pause());
   if(current >= vids.length) return;
-  vids[current].play().catch(()=>{}); // catch untuk autoplay blocked
+  vids[current].play().catch(()=>{});
   vids[current].onended = () => {
     current++;
     playNext();
   }
 }
 
-// autoplay video pertama saat load
-window.addEventListener("load", () => {
-  playNext();
-});
-
-// optional: bisa swipe/slide manual tetap jalan karena scrollable container
+window.addEventListener("load", playNext);
 </script>
 
 </body>
 </html>
-
