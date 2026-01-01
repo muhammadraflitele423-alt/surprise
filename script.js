@@ -2,7 +2,6 @@
 function login(){
   const u = user.value;
   const p = pass.value;
-
   if(u === "Karien Krisdina S" && p === "070321"){
     window.location.href = "home.html";
   } else {
@@ -21,7 +20,6 @@ function playMusic(){
 const text = "Selamat Lulus Sidang Skripsi 🎓";
 let i = 0;
 const typing = document.getElementById("typing");
-
 if(typing){
   function type(){
     if(i < text.length){
