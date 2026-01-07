@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selamat 🤍</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat 🤍</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <button class="music-btn" onclick="playMusic()">🎵</button>
+<button class="night-btn" onclick="toggleNight()">🌙</button>
 
 <audio id="bgMusic" loop>
-  <source src="musik/music.mp3" type="audio/mp3">
+  <source src="musik/musik1.mp3" type="audio/mp3">
 </audio>
 
 <div class="flowers"></div>
@@ -27,7 +28,19 @@
   <p>Keren banget woii 🤍</p>
 </section>
 
-<section class="section message fade-up">
+<!-- SURAT -->
+<section class="section letter">
+  <div class="envelope" onclick="openLetter()">
+    <div class="envelope-front">💌</div>
+    <div class="letter-paper hidden" id="letterPaper">
+      <h3>untuk karien krisdina s 🤍</h3>
+      <pre id="letterText"></pre>
+      <span class="signature">– Alfareza</span>
+    </div>
+  </div>
+</section>
+
+<section class="section message">
   <div class="message-card">
     <img src="foto/foto-dia.png">
     <div class="text">
@@ -40,14 +53,14 @@
   </div>
 </section>
 
-<section class="section ending fade-up" id="penutup">
+<section class="section ending" id="penutup">
   <h2>hehe 🤍</h2>
   <video controls src="video/v5.mp4"></video>
 </section>
 
 <div id="finalMessage">
   terimakasih karien krisdina s 🤍<br>
-  - maaf dan terimakasih
+  – maaf dan terimakasih
 </div>
 
 <script src="script.js"></script>
