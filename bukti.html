@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bukti Kangen 🤍</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bukti Kangen 🤍</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2 class="center" style="text-align:center; margin-top:24px;">
+<h2 style="text-align:center;margin:24px;">
   Sedikit Bukti Kangen 🤍
 </h2>
 
@@ -21,25 +21,20 @@
   <video src="video/v6.mp4" muted></video>
 </div>
 
-<div style="text-align:center; margin:24px;">
+<div style="text-align:center;margin:24px;">
   <button onclick="history.back()">⬅ Kembali</button>
 </div>
 
 <script>
-const vids = document.querySelectorAll(".manual-slider video");
-let current = 0;
-
+const vids=document.querySelectorAll("video");
+let i=0;
 function playNext(){
-  vids.forEach(v => v.pause());
-  if(current >= vids.length) return;
-  vids[current].play().catch(()=>{});
-  vids[current].onended = () => {
-    current++;
-    playNext();
-  }
+  vids.forEach(v=>v.pause());
+  if(i>=vids.length)return;
+  vids[i].play();
+  vids[i].onended=()=>{i++;playNext();}
 }
-
-window.addEventListener("load", playNext);
+window.onload=playNext;
 </script>
 
 </body>
