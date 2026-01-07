@@ -1,20 +1,15 @@
 *{box-sizing:border-box}
-
 body{
   margin:0;
-  font-family:'Poppins',sans-serif;
+  font-family:Poppins,sans-serif;
   background:#ffeef2;
   color:#333;
   scroll-behavior:smooth;
 }
-
 .section{
-  height:100svh;
+  min-height:100svh;
   padding:24px;
-  scroll-snap-align:start;
 }
-
-html,body{scroll-snap-type:y mandatory}
 
 /* LOGIN */
 .login-page{
@@ -24,15 +19,15 @@ html,body{scroll-snap-type:y mandatory}
   height:100vh;
 }
 .login-box{
-  background:#fff;
+  background:white;
   padding:30px;
   border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
   width:90%;
   max-width:350px;
   text-align:center;
 }
 
+/* BUTTONS */
 input,button{
   width:100%;
   padding:12px;
@@ -40,123 +35,81 @@ input,button{
   border:none;
   border-radius:20px;
 }
-
 button{
   background:#ff9db0;
   color:white;
-  font-weight:bold;
-  cursor:pointer;
 }
 
 /* HERO */
-.hero{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  text-align:center;
-}
+.hero{text-align:center;display:flex;flex-direction:column;justify-content:center}
 
-/* STICKERS */
-.stickers{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-}
-.sticker{
-  position:absolute;
-  width:80px;
-  opacity:.8;
-  animation:float 6s ease-in-out infinite;
-}
+/* STICKER */
+.stickers{position:fixed;inset:0;pointer-events:none}
+.sticker{position:absolute;width:80px;animation:float 6s infinite}
 .s1{top:15%;left:10%}
 .s2{top:50%;right:8%}
 .s3{bottom:15%;left:30%}
+@keyframes float{50%{transform:translateY(-20px)}}
 
-@keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-20px)}
-  100%{transform:translateY(0)}
-}
+/* FLOWER */
+.flowers{position:fixed;inset:0;pointer-events:none}
+.flower{position:absolute;top:-40px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
-/* FLOWERS */
-.flowers{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
+/* LETTER */
+.letter{display:flex;justify-content:center;align-items:center}
+.envelope{
+  width:260px;height:180px;
+  background:#ffccd5;
+  border-radius:16px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-.flower{
+.envelope-front{font-size:48px;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.letter-paper{
   position:absolute;
-  top:-40px;
-  animation:fall linear infinite;
+  inset:0;
+  background:#fffaf3;
+  padding:24px;
+  border-radius:12px;
+  font-family:Courier New,monospace;
+  overflow:auto;
 }
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg)}
-}
+.hidden{display:none}
+.signature{text-align:right;display:block;margin-top:16px}
 
 /* MESSAGE */
 .message-card{
   background:white;
   padding:20px;
   border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
   display:flex;
   gap:16px;
-  align-items:center;
 }
-.message-card img{
-  width:120px;
-  border-radius:16px;
-}
+.message-card img{width:120px;border-radius:16px}
 @media(max-width:600px){
   .message-card{flex-direction:column;text-align:center}
 }
 
 /* VIDEO */
-video{
-  width:100%;
-  border-radius:20px;
-}
+video{width:100%;border-radius:20px}
 
 /* SLIDER */
-.manual-slider{
-  display:flex;
-  gap:16px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-}
-.manual-slider video{
-  min-width:90%;
-  scroll-snap-align:center;
-}
+.manual-slider{display:flex;gap:16px;overflow-x:auto}
+.manual-slider video{min-width:90%}
 
-/* MUSIC BTN */
-.music-btn{
+/* BUTTON FIX */
+.music-btn,.night-btn{
   position:fixed;
-  top:16px;
-  right:16px;
-  width:44px;
-  height:44px;
+  width:44px;height:44px;
   border-radius:50%;
-  background:#ff9db0;
-  color:white;
-  border:none;
 }
+.music-btn{top:16px;right:16px}
+.night-btn{bottom:16px;right:16px;background:#333}
 
-/* FINAL */
-#finalMessage{
-  position:fixed;
-  inset:0;
-  background:rgba(255,239,245,.95);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  font-size:18px;
-  opacity:0;
-  pointer-events:none;
-  transition:1.5s;
-}
-#finalMessage.show{
-  opacity:1;
-  pointer-events:auto;
-}
+/* NIGHT */
+body.night{background:#1c1c1c;color:#eee}
+body.night .message-card,
+body.night .letter-paper{background:#2a2a2a;color:#eee}
