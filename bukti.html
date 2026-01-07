@@ -13,12 +13,19 @@
 </h2>
 
 <div class="manual-slider">
-  <video src="video/v1.1.mp4" muted></video>
-  <video src="video/v1.mp4" muted></video>
-  <video src="video/v2.mp4" muted></video>
-  <video src="video/v3.mp4" muted></video>
-  <video src="video/v4.mp4" muted></video>
-  <video src="video/v6.mp4" muted></video>
+
+  <video muted playsinline preload="none" data-src="video/v1.1.mp4"></video>
+
+  <video muted playsinline preload="none" data-src="video/v1.mp4"></video>
+
+  <video muted playsinline preload="none" data-src="video/v2.mp4"></video>
+
+  <video muted playsinline preload="none" data-src="video/v3.mp4"></video>
+
+  <video muted playsinline preload="none" data-src="video/v4.mp4"></video>
+
+  <video muted playsinline preload="none" data-src="video/v6.mp4"></video>
+
 </div>
 
 <div style="text-align:center;margin:24px;">
@@ -26,15 +33,29 @@
 </div>
 
 <script>
-const vids=document.querySelectorAll("video");
-let i=0;
+const vids = document.querySelectorAll("video");
+let i = 0;
+
 function playNext(){
-  vids.forEach(v=>v.pause());
-  if(i>=vids.length)return;
-  vids[i].play();
-  vids[i].onended=()=>{i++;playNext();}
+  vids.forEach(v => v.pause());
+  if(i >= vids.length) return;
+
+  const v = vids[i];
+
+  // lazy load: load video hanya saat akan diputar
+  if(!v.src){
+    v.src = v.dataset.src;
+    v.load();
+  }
+
+  v.play().catch(()=>{});
+  v.onended = () => {
+    i++;
+    playNext();
+  };
 }
-window.onload=playNext;
+
+window.addEventListener("load", playNext);
 </script>
 
 </body>
