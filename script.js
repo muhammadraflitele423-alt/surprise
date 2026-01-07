@@ -52,23 +52,33 @@ keren banget anjayy.. tuuu bisaa kan
 kata aku juga makanyaa jangan suka
 rendahin selera akuu!!
 
-maoo cobain tukeran mata sekali!!
+maoo cobain tukeran mata sekali!?
 kamu harus liat kamu sendiri dari
 mata aku!!!
 
 jujur setiap kamu ngomong kalau
 kamu jelek tu aku nggak ngerti.
-EMANG KAPAN KAMU GA CANTIK WO.
+EMANG KAPAN KAMU GA CANTIK WOEE.
 
 tapi sumpah ya setiap kamu bete sama
 aku sebenernya sedih anjay aku..
 kasian ke kamu..
+kamute gapernah nyuruh aku harus suka sama kamu,
+tapi akhirnya aku sendiri yang ngedeketin kamu
 
 maaf ya harus direpotin sama perasaan aku
-maaf kalau aku bikin kamu nggak nyaman :(
+maaf kalau aku bikin kamu nggak nyaman 
+maaf kamu ketemunya aku:(
+
+hihii balik lagii pkonyaa kamu kereenn 
+aku ngetik ini sambil bayangin muka kamu
+kayanya lega banget yee..
+banyak anjay yang pengen di ketik 
+tapi aku tau kamu males baca hehe
 
 intinya selamatt yaaa luvv
-uwuu more than you know
+uuuu more than you know
+cailaaa
 `;
 let li=0;
 function openLetter(){
