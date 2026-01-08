@@ -1,15 +1,30 @@
 /* LOGIN */
 function login(){
   if(user.value==="Karien Krisdina S" && pass.value==="070321"){
-    location.href="home.html";
-  } else alert("Hehe salah 🤭");
+    if(confirm("Ini beneran Karien Krisdina S?")){
+      sessionStorage.setItem("fromLogin","yes");
+      sessionStorage.setItem("firstHome","yes");
+      location.href="home.html";
+    }else{
+      alert("gabolleh liat 😤");
+    }
+  }else alert("Hehe salah 🤭");
 }
 
-/* MUSIC FADE */
+/* AUTO MUSIC */
+window.addEventListener("load",()=>{
+  if(sessionStorage.getItem("fromLogin")==="yes"){
+    playMusic();
+    sessionStorage.removeItem("fromLogin");
+  }
+});
+
+/* MUSIC */
 function playMusic(){
   const m=document.getElementById("bgMusic");
+  if(!m || !m.paused) return;
   m.volume=0;
-  m.play();
+  m.play().catch(()=>{});
   let v=0;
   const f=setInterval(()=>{
     if(v<0.5){v+=0.05;m.volume=v;}
@@ -17,7 +32,7 @@ function playMusic(){
   },200);
 }
 
-/* TYPING JUDUL */
+/* TYPING */
 const text="Selamat Lulus Sidang Skripsi 🎓";
 let ti=0;
 const typing=document.getElementById("typing");
@@ -30,10 +45,10 @@ if(typing){
   })();
 }
 
-/* FLOWERS */
+/* FLOWERS (FIRST TIME ONLY) */
 const flowers=document.querySelector(".flowers");
-if(flowers){
-  setInterval(()=>{
+if(flowers && sessionStorage.getItem("firstHome")==="yes"){
+  let interval=setInterval(()=>{
     const f=document.createElement("div");
     f.className="flower";
     f.innerHTML=["🌸","💮","🌼","🌷"][Math.floor(Math.random()*4)];
@@ -43,7 +58,13 @@ if(flowers){
     flowers.appendChild(f);
     setTimeout(()=>f.remove(),12000);
   },400);
+
+  setTimeout(()=>{
+    clearInterval(interval);
+    sessionStorage.removeItem("firstHome");
+  },6000);
 }
+
 
 /* SURAT */
 const letterContent=`
