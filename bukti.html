@@ -3,28 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bukti Kangen 🤍</title>
+<title>Bukti Kangen</title>
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* khusus halaman bukti biar rapi di HP */
+.manual-slider{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scroll-snap-type:x mandatory;
+}
+
+.manual-slider video{
+  min-width:90%;
+  border-radius:20px;
+  scroll-snap-align:center;
+}
+</style>
 </head>
+
 <body>
 
-<h2 style="text-align:center;margin:24px;">
-  Sedikit Bukti Kangen 🤍
+<h2 style="text-align:center;margin:24px 12px;">
+  Sedikit Bukti Kangen
 </h2>
 
 <div class="manual-slider">
 
-  <video muted playsinline preload="none" data-src="video/v1.1.mp4"></video>
+  <video controls playsinline preload="none" data-src="video/v1.1.mp4"></video>
 
-  <video muted playsinline preload="none" data-src="video/v1.mp4"></video>
+  <video controls playsinline preload="none" data-src="video/v1.mp4"></video>
 
-  <video muted playsinline preload="none" data-src="video/v2.mp4"></video>
+  <video controls playsinline preload="none" data-src="video/v2.mp4"></video>
 
-  <video muted playsinline preload="none" data-src="video/v3.mp4"></video>
+  <video controls playsinline preload="none" data-src="video/v3.mp4"></video>
 
-  <video muted playsinline preload="none" data-src="video/v4.mp4"></video>
+  <video controls playsinline preload="none" data-src="video/v4.mp4"></video>
 
-  <video muted playsinline preload="none" data-src="video/v6.mp4"></video>
+  <video controls playsinline preload="none" data-src="video/v6.mp4"></video>
 
 </div>
 
@@ -33,29 +52,22 @@
 </div>
 
 <script>
-const vids = document.querySelectorAll("video");
-let i = 0;
+const videos = document.querySelectorAll("video");
 
-function playNext(){
-  vids.forEach(v => v.pause());
-  if(i >= vids.length) return;
+// lazy load + satu video aktif
+videos.forEach(v=>{
+  v.addEventListener("play",()=>{
+    videos.forEach(o=>{
+      if(o!==v) o.pause();
+    });
 
-  const v = vids[i];
-
-  // lazy load: load video hanya saat akan diputar
-  if(!v.src){
-    v.src = v.dataset.src;
-    v.load();
-  }
-
-  v.play().catch(()=>{});
-  v.onended = () => {
-    i++;
-    playNext();
-  };
-}
-
-window.addEventListener("load", playNext);
+    // load video saat diputar
+    if(!v.src){
+      v.src = v.dataset.src;
+      v.load();
+    }
+  });
+});
 </script>
 
 </body>
