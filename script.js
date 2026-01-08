@@ -1,6 +1,6 @@
 /* LOGIN */
 function login(){
-  if(user.value==="Karien Krisdina S" && pass.value==="070321"){
+  if(user.value==="Karien Krisdina S" && pass.value==="120825"){
     if(confirm("Ini beneran Karien Krisdina S?")){
       sessionStorage.setItem("fromLogin","yes");
       sessionStorage.setItem("firstHome","yes");
